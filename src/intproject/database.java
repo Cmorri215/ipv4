@@ -5,6 +5,9 @@
  */
 package intproject;
 
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author cmcgow209
@@ -16,8 +19,94 @@ public class database extends javax.swing.JFrame {
      */
     public database() {
         initComponents();
+        addRowToJTable();
     }
-
+    public class User{
+        public String Sname;
+        public String Fname;
+        public String Dob;
+        public String Sex;
+        public String Address;
+        public String Contnum;
+        public String Apptype;
+        public String Status;
+        public String Date;
+        public String Time;
+        public boolean Terminate;
+        public String UserType;
+        public String UserID;
+        
+        public User(String Sname, String Fname, String Dob, String Sex, String Address, String Contnum, String Apptype, String Status, String Date,String time, boolean terminate, String UserType, String UserID){
+            this.Sname = Sname;
+            this.Fname = Fname;
+            this.Dob = Dob;
+            this.Sex = Sex;
+            this.Address = Address;
+            this.Contnum = Contnum;
+            this.Apptype = Apptype;
+            this.Status = Status;
+            this.Date = Date;
+            this.Time = Time;
+            this.Terminate = Terminate;
+            this.UserType = UserType;
+            this.UserID = UserID;    
+        } 
+    }
+      
+     public ArrayList ListUsers(){
+       ArrayList<User> list = new ArrayList<User>(); 
+       User u1 = new User("McGowan","Conor","20/04/1999","M","1 Place Street","04420540144","Check-up","Pending","09/03/2018","1830PM", false, "Student", "170113344");
+       User u2 = new User("Morrison","Cameron","06/01/1999","M","2 Zone Avenue","04414133399","Check-up","Pending","15/03/2018","0900AM",false,"Student","159745612");
+       User u3 = new User("McDougal","Cameron","04/12/1998","M","3 Location Drive","044167591230","Lens Fitting","Ongoing","01/04/2018","1300PM",false,"Student","146897523");
+       User u4 = new User("Martin","Euan","21/02/1999","M","4 Area Park","04414562783","Glasses Repair","Pending","18/03/2018","1200PM",false,"Student","185642378");
+       User u5 = new User("Holmes", "Alex","21/04/1987","M","5 Point Street", "04464789213", "Eye Test","Pending","28/03/2018","1400PM",false,"Student","158974661");
+       User u6 = new User("Coaxley","Raymond","06/06/1972","M","6 Spot Drive", "04446128764", "Glasses Repair","Ongoing","05/04/2018","1500PM",false, "Staff", "046123789");
+       User u7 = new User("Goodall","Bill", "25/01/1954","M","7 Region Avenue","04414675213", "Eye Test","Pending","07/04/2018","1445PM",false, "Public", "056745617");
+       User u8 = new User("Janus", "Hugh", "09/08/1976","M", "8 Scene Road", "044164789125", "Glasses Repair", "Pending", "11/04/2018","1345PM",false,"Public","156789045");
+       User u9 = new User("Cook", "Brian", "14/09/1988", "M", "9 Position Park", "04414678246","Check-Up","Pending","25/03/2018","0800AM",false,"Staff","146780029");
+       User u10 = new User("Dickson", "Lauren","12/03/2005", "F", "10 Whereabouts Wynd", "04464789123","Glasses Repair","Ongoing","14/03/2018","1030AM",false,"Public","1488746158");
+       list.add(u1);
+       list.add(u2);
+       list.add(u3);
+       list.add(u4);
+       list.add(u5);
+       list.add(u6);
+       list.add(u7);
+       list.add(u8);
+       list.add(u9);
+       list.add(u10);
+       return list;       
+     } 
+ public void addRowToJTable()
+    {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        ArrayList<User> list = ListUsers();
+        Object rowData[] = new Object[14];
+        for(int i = 0; i < list.size(); i++)
+        {
+            rowData[0] = list.get(i).Sname;
+            rowData[1] = list.get(i).Fname;
+            rowData[2] = list.get(i).Dob;
+            rowData[4] = list.get(i).Sex;
+            rowData[5] = list.get(i).Address;
+            rowData[6] = list.get(i).Contnum;
+            rowData[7] = list.get(i).Apptype;
+            rowData[8] = list.get(i).Status;
+            rowData[9] = list.get(i).Date;
+            rowData[10] = list.get(i).Time;
+            rowData[11] = list.get(i).Terminate;
+            rowData[12] = list.get(i).UserType;
+            rowData[13] = list.get(i).UserID;
+            
+            
+            
+                    
+                   
+            model.addRow(rowData);
+        }
+                
+    }     
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -58,16 +147,14 @@ public class database extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 732, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 752, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(94, 94, 94)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 212, Short.MAX_VALUE))
+                .addContainerGap(118, Short.MAX_VALUE))
         );
 
         pack();
